@@ -1,0 +1,26 @@
+1:kubernetes 基线升级，k8s1.5 -> k8s1.7，k8s1.7 -> k8s1.9，k8s1.9 -> k8s1.11,
+为CCE，CCI和线下FusionStage提供保障，并完成CCE1.11及FusionStage1.9一致性认证，获得社区牌照。
+实现k8s基线代码平稳升级，升级效率大大提高：12人月-> 5人月
+1.1 完成私有代码cherry-pick到最新的开源k8s版本中。
+1.2 完成各组件的编译，及部分私有特性根据新版本k8s重构
+1.3 修复所有目录下的无法通过unit test
+1.4 组件运行测试，在环境中运行新版本k8s，并测试，修复所有e2e用例
+1.5 将新增加的commit按特性整理合并的老commit中
+2:社区贡献，github：https://github.com/hanxiaoshuai
+kubernetes核心主库贡献commit 97条，全球top100的贡献者，核心主库reviewer
+https://github.com/kubernetes
+apiserver componentconfig独立  PR[#66059]
+apimachinery componentconfig独立  PR[#66058] 
+ipvs excludeCIDRs传入bug修复  PR[#64554]
+kubernetes-sigs子库poseidon top level reviewer
+https://github.com/kubernetes-sigs/poseidon
+refrain 'kubectl' command   PR[#87]
+delete the correspond pods  PR[#103]
+3: 私有版本特性
+1: pod亲和调度，最低反亲和生效个数。只有当反亲和的pod达到指定个数时，才产生反亲和的效果。
+2: service对接华为私有ELB实现。k8s的service对接华为的ELB实现服务反转发及相关负载均衡。发生带endpoint端
+3：k8s审计日志实现。记录调用api的操作用户，动作，操作对象，操作时间等信息。
+4. CI工程能力构建
+为CCE，CCI和线下FusionStage提供CI工程能力构建。将e2e，编译，UT等检查项目
+以容器化并发运行，在提交代码时使CI门禁运行检查时间从1个半小时，缩小到50分钟以内，
+用例检查数增加100+，显著提高代码开发效率。
